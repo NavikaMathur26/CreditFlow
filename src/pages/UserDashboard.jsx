@@ -106,11 +106,10 @@ export default function UserDashboard() {
                 <button
                   key={item.id}
                   onClick={() => handleTabChange(item.id)}
-                  className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${
-                    isActive
+                  className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${isActive
                       ? 'bg-[#EEF5FF] text-[#1B64F2] font-semibold shadow-sm shadow-blue-500/5'
                       : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
-                  }`}
+                    }`}
                 >
                   {isActive && item.id === 'security' ? (
                     <Shield size={19} className="text-[#1B64F2] fill-[#1B64F2]" />
@@ -127,26 +126,8 @@ export default function UserDashboard() {
           </nav>
         </div>
 
-        {/* User Card & Log Out */}
-        <div className="pt-4 border-t border-[#F1F5F9] space-y-3">
-          <div className="px-2 py-2 flex items-center gap-3 rounded-xl bg-slate-50/80">
-            {user?.avatar ? (
-              <img
-                src={user.avatar}
-                alt={displayName}
-                className="w-9 h-9 rounded-full object-cover border border-slate-200"
-              />
-            ) : (
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#1B64F2] to-[#0A50D0] text-white flex items-center justify-center font-bold text-xs flex-shrink-0 shadow-sm">
-                {displayName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
-              </div>
-            )}
-            <div className="min-w-0 flex-1">
-              <p className="text-xs font-bold text-[#0F172A] truncate">{displayName}</p>
-              <p className="text-[11px] text-[#64748B] truncate">+91 {displayMobile}</p>
-            </div>
-          </div>
-
+        {/* Log Out only at bottom */}
+        <div className="pt-4 border-t border-[#F1F5F9]">
           <button
             onClick={handleLogout}
             className="w-full flex items-center gap-3.5 px-4 py-2.5 rounded-2xl text-sm font-medium text-[#64748B] hover:text-red-600 hover:bg-red-50/70 transition-all text-left group"
@@ -160,12 +141,21 @@ export default function UserDashboard() {
       {/* Mobile Top Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-[#F0F3F7] px-5 flex items-center justify-between z-30">
         <BrandLogo size="sm" />
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="p-2 text-[#64748B] hover:bg-[#F8FAFC] rounded-xl"
-        >
-          {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+        <div className="flex items-center gap-3">
+          {user?.avatar ? (
+            <img src={user.avatar} alt={displayName} className="w-8 h-8 rounded-full object-cover border border-slate-200" />
+          ) : (
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#1B64F2] to-[#0A50D0] text-white flex items-center justify-center font-bold text-xs shadow-sm">
+              {displayName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+            </div>
+          )}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="p-2 text-[#64748B] hover:bg-[#F8FAFC] rounded-xl"
+          >
+            {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer */}
@@ -180,9 +170,8 @@ export default function UserDashboard() {
                   <button
                     key={item.id}
                     onClick={() => handleTabChange(item.id)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-left ${
-                      isActive ? 'bg-[#EEF5FF] text-[#1B64F2] font-semibold' : 'text-[#64748B]'
-                    }`}
+                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-left ${isActive ? 'bg-[#EEF5FF] text-[#1B64F2] font-semibold' : 'text-[#64748B]'
+                      }`}
                   >
                     <Icon size={18} className={isActive ? 'text-[#1B64F2]' : 'text-[#64748B]'} />
                     <span>{item.label}</span>
@@ -204,15 +193,69 @@ export default function UserDashboard() {
       )}
 
       {/* Full-Screen Main Content */}
-      <main className="flex-1 h-screen overflow-y-auto bg-[#FAFBFD] pt-16 md:pt-0">
-        <div className="w-full max-w-5xl mx-auto px-6 py-8 md:px-12 md:py-10 lg:px-16 lg:py-12">
-          {activeTab === 'security' && <SecurityView onNavigate={handleTabChange} />}
-          {activeTab === 'send' && <SendMoneyView onNavigate={handleTabChange} />}
-          {activeTab === 'receive' && <ReceiveMoneyView />}
-          {activeTab === 'transactions' && <TransactionsView />}
-          {activeTab === 'dashboard' && <DashboardOverview onNavigate={handleTabChange} />}
-          {activeTab === 'profile' && <ProfileView />}
-          {activeTab === 'help' && <HelpSupportView />}
+      <main className="flex-1 h-screen overflow-y-auto bg-[#FAFBFD] pt-16 md:pt-0 flex flex-col">
+        {/* Desktop Top Header Bar */}
+        <div className="hidden md:flex items-center justify-between px-8 py-4 bg-white border-b border-[#F0F3F7] flex-shrink-0">
+          {/* Greeting */}
+          <div>
+            <h2 className="text-xl font-extrabold text-[#0F172A] tracking-tight">
+              Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 18 ? 'afternoon' : 'evening'}, {displayName.split(' ')[0]}!
+            </h2>
+            <p className="text-xs text-[#64748B] mt-0.5">Here's your financial overview for today.</p>
+          </div>
+
+          {/* Right controls */}
+          <div className="flex items-center gap-4">
+            {/* Search */}
+            <div className="flex items-center gap-2 bg-[#F8FAFC] border border-[#E8EDF2] rounded-xl px-3.5 py-2.5 w-44">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="#94A3B8" strokeWidth="1.5"/><path d="M10 10L13 13" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/></svg>
+              <span className="text-xs text-[#94A3B8]">Search...</span>
+            </div>
+
+            {/* Notification Bell */}
+            <div className="relative">
+              <button className="w-9 h-9 rounded-full bg-[#F8FAFC] border border-[#E8EDF2] flex items-center justify-center text-[#64748B] hover:bg-[#EEF5FF] transition-colors">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 00-6 6v3l-2 2v1h16v-1l-2-2V8a6 6 0 00-6-6zM8.5 17a1.5 1.5 0 003 0H8.5z" fill="#64748B"/></svg>
+              </button>
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#1B64F2] text-white rounded-full text-[9px] font-bold flex items-center justify-center">1</span>
+            </div>
+
+            {/* Help */}
+            <button
+              onClick={() => handleTabChange('help')}
+              className="w-9 h-9 rounded-full bg-[#F8FAFC] border border-[#E8EDF2] flex items-center justify-center text-[#64748B] hover:bg-[#EEF5FF] transition-colors"
+            >
+              <HelpCircle size={16} />
+            </button>
+
+            {/* User Avatar + Name */}
+            <button
+              onClick={() => handleTabChange('profile')}
+              className="flex items-center gap-2.5 pl-1 pr-3 py-1 rounded-full bg-[#F8FAFC] border border-[#E8EDF2] hover:bg-[#EEF5FF] transition-colors"
+            >
+              {user?.avatar ? (
+                <img src={user.avatar} alt={displayName} className="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm" />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#1B64F2] to-[#0A50D0] text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                  {displayName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+                </div>
+              )}
+              <span className="text-xs font-semibold text-[#0F172A]">{displayName}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Page Content */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="w-full max-w-6xl mx-auto px-6 py-6 md:px-8 md:py-7">
+            {activeTab === 'security' && <SecurityView onNavigate={handleTabChange} />}
+            {activeTab === 'send' && <SendMoneyView onNavigate={handleTabChange} />}
+            {activeTab === 'receive' && <ReceiveMoneyView />}
+            {activeTab === 'transactions' && <TransactionsView />}
+            {activeTab === 'dashboard' && <DashboardOverview onNavigate={handleTabChange} />}
+            {activeTab === 'profile' && <ProfileView />}
+            {activeTab === 'help' && <HelpSupportView />}
+          </div>
         </div>
       </main>
     </div>
@@ -565,7 +608,7 @@ function ReceiveMoneyView() {
   const handle = `${(user?.name || 'Rahul Kumar').toLowerCase().replace(/\s+/g, '')}@cf`;
 
   const handleCopy = () => {
-    navigator.clipboard?.writeText(formattedMobile).catch(() => {});
+    navigator.clipboard?.writeText(formattedMobile).catch(() => { });
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -620,19 +663,19 @@ function ReceiveMoneyView() {
             <rect x="23" y="123" width="24" height="24" rx="2" fill="white" />
             <rect x="29" y="129" width="12" height="12" rx="1" fill="#0F172A" />
             {[
-              [65,15,6,6],[75,15,6,6],[95,15,6,6],
-              [65,25,6,6],[85,25,6,6],[105,25,6,6],
-              [65,35,6,6],[75,35,6,6],[85,35,6,6],[95,35,6,6],
-              [65,45,6,6],[105,45,6,6],
-              [15,65,6,6],[35,65,6,6],[55,65,6,6],[75,65,6,6],[95,65,6,6],[115,65,6,6],[135,65,6,6],[145,65,6,6],
-              [25,75,6,6],[45,75,6,6],[65,75,6,6],[85,75,6,6],[105,75,6,6],[125,75,6,6],[145,75,6,6],
-              [15,85,6,6],[35,85,6,6],[55,85,6,6],[75,85,6,6],[95,85,6,6],[115,85,6,6],[135,85,6,6],
-              [25,95,6,6],[45,95,6,6],[65,95,6,6],[85,95,6,6],[105,95,6,6],[125,95,6,6],
-              [65,115,6,6],[85,115,6,6],[115,115,6,6],[135,115,6,6],[145,115,6,6],
-              [75,125,6,6],[95,125,6,6],[105,125,6,6],[125,125,6,6],[145,125,6,6],
-              [65,135,6,6],[85,135,6,6],[115,135,6,6],[135,135,6,6],
-              [75,145,6,6],[95,145,6,6],[105,145,6,6],[125,145,6,6],[145,145,6,6]
-            ].map(([x,y,w,h], idx) => (
+              [65, 15, 6, 6], [75, 15, 6, 6], [95, 15, 6, 6],
+              [65, 25, 6, 6], [85, 25, 6, 6], [105, 25, 6, 6],
+              [65, 35, 6, 6], [75, 35, 6, 6], [85, 35, 6, 6], [95, 35, 6, 6],
+              [65, 45, 6, 6], [105, 45, 6, 6],
+              [15, 65, 6, 6], [35, 65, 6, 6], [55, 65, 6, 6], [75, 65, 6, 6], [95, 65, 6, 6], [115, 65, 6, 6], [135, 65, 6, 6], [145, 65, 6, 6],
+              [25, 75, 6, 6], [45, 75, 6, 6], [65, 75, 6, 6], [85, 75, 6, 6], [105, 75, 6, 6], [125, 75, 6, 6], [145, 75, 6, 6],
+              [15, 85, 6, 6], [35, 85, 6, 6], [55, 85, 6, 6], [75, 85, 6, 6], [95, 85, 6, 6], [115, 85, 6, 6], [135, 85, 6, 6],
+              [25, 95, 6, 6], [45, 95, 6, 6], [65, 95, 6, 6], [85, 95, 6, 6], [105, 95, 6, 6], [125, 95, 6, 6],
+              [65, 115, 6, 6], [85, 115, 6, 6], [115, 115, 6, 6], [135, 115, 6, 6], [145, 115, 6, 6],
+              [75, 125, 6, 6], [95, 125, 6, 6], [105, 125, 6, 6], [125, 125, 6, 6], [145, 125, 6, 6],
+              [65, 135, 6, 6], [85, 135, 6, 6], [115, 135, 6, 6], [135, 135, 6, 6],
+              [75, 145, 6, 6], [95, 145, 6, 6], [105, 145, 6, 6], [125, 145, 6, 6], [145, 145, 6, 6]
+            ].map(([x, y, w, h], idx) => (
               <rect key={idx} x={x} y={y} width={w} height={h} fill="#0F172A" rx="1" />
             ))}
           </svg>
@@ -694,7 +737,7 @@ function TransactionsView() {
       amount: '+ ₹500.00',
       status: 'Success',
       isPositive: true,
-      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
     },
     {
       id: 2,
@@ -705,18 +748,18 @@ function TransactionsView() {
       amount: '- ₹200.00',
       status: 'Success',
       isPositive: false,
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
+      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
     },
     {
       id: 3,
-      name: 'Mom',
+      name: 'Sunita Devi',
       type: 'received',
-      text: 'Received from Mom',
+      text: 'Received from Sunita Devi',
       date: '27 May 2024, 09:20 AM',
       amount: '+ ₹1,000.00',
       status: 'Success',
       isPositive: true,
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
+      avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
     },
     {
       id: 4,
@@ -727,7 +770,7 @@ function TransactionsView() {
       amount: '- ₹150.00',
       status: 'Success',
       isPositive: false,
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+      avatar: 'https://randomuser.me/api/portraits/men/47.jpg',
     },
     {
       id: 5,
@@ -738,7 +781,7 @@ function TransactionsView() {
       amount: '+ ₹300.00',
       status: 'Success',
       isPositive: true,
-      avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80',
+      avatar: 'https://randomuser.me/api/portraits/men/55.jpg',
     },
   ];
 
@@ -764,11 +807,10 @@ function TransactionsView() {
               <button
                 key={tab}
                 onClick={() => setFilter(tab)}
-                className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${
-                  isActive
+                className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${isActive
                     ? 'bg-[#1B64F2] text-white shadow-sm shadow-[#1B64F2]/20'
                     : 'bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A]'
-                }`}
+                  }`}
               >
                 {tab}
               </button>
@@ -828,105 +870,259 @@ function DashboardOverview({ onNavigate }) {
   const displayName = user?.name || 'Rahul Kumar';
   const displayMobile = user?.mobile || '9876543210';
   const formattedMobile = `+91 ${displayMobile.replace(/(\d{5})(\d{5})/, '$1 $2')}`;
+  const balance = wallet?.balance ?? 24850.75;
+  const monthlySpent = wallet?.monthlySpent ?? 14320.00;
+
+  const recentTxns = [
+    { name: 'Priya Patel',    category: 'Transfer',      date: '28 May 2024', amount: '+₹500.00',   status: 'Posted', isPos: true,  avatar: 'https://randomuser.me/api/portraits/women/44.jpg' },
+    { name: 'Amit Verma',     category: 'Transfer',      date: '27 May 2024', amount: '-₹200.00',   status: 'Posted', isPos: false, avatar: 'https://randomuser.me/api/portraits/men/32.jpg' },
+    { name: 'Sunita Devi',    category: 'Family',        date: '27 May 2024', amount: '+₹1,000.00', status: 'Posted', isPos: true,  avatar: 'https://randomuser.me/api/portraits/women/65.jpg' },
+    { name: 'Raj Singh',      category: 'Travel',        date: '26 May 2024', amount: '-₹150.00',   status: 'Posted', isPos: false, avatar: 'https://randomuser.me/api/portraits/men/47.jpg' },
+    { name: 'Deepak Kumar',   category: 'Entertainment', date: '26 May 2024', amount: '+₹300.00',   status: 'Posted', isPos: true,  avatar: 'https://randomuser.me/api/portraits/men/55.jpg' },
+  ];
+
+  const spending = [
+    { label: 'Transfer',      color: '#1B64F2', pct: 38, amt: '₹5,441.60' },
+    { label: 'Travel',        color: '#F59E0B', pct: 22, amt: '₹3,150.40' },
+    { label: 'Family',        color: '#10B981', pct: 18, amt: '₹2,577.60' },
+    { label: 'Entertainment', color: '#8B5CF6', pct: 13, amt: '₹1,861.60' },
+    { label: 'Other',         color: '#94A3B8', pct:  9, amt: '₹1,288.80' },
+  ];
+
+  // Mini SVG sparkline for Cash Flow Trend
+  const incomePoints  = [40, 60, 55, 70, 65, 80, 75];
+  const spendPoints   = [20, 35, 30, 50, 45, 55, 50];
+  const balancePoints = [80, 75, 72, 68, 74, 78, 76];
+  const W = 380; const H = 100; const cols = incomePoints.length;
+  const xPos = (i) => (i / (cols - 1)) * W;
+  const yPos = (v) => H - (v / 100) * H;
+  const toPath = (pts) => pts.map((v, i) => `${i === 0 ? 'M' : 'L'}${xPos(i).toFixed(1)},${yPos(v).toFixed(1)}`).join(' ');
 
   return (
-    <div className="space-y-6 md:space-y-8">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-xs font-semibold text-[#1B64F2] tracking-wider uppercase mb-1">Welcome back</p>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-[#0F172A] tracking-tight">{displayName}</h1>
-          <p className="text-xs md:text-sm text-[#64748B] mt-1">Here is your digital wallet overview.</p>
-        </div>
+    <div className="space-y-5">
 
-        <div className="relative w-24 h-20 md:w-32 md:h-24 flex items-center justify-center flex-shrink-0">
-          <div className="absolute w-20 h-20 bg-blue-400/10 rounded-full blur-xl pointer-events-none" />
-          <svg width="94" height="80" viewBox="0 0 100 85" fill="none">
-            <rect x="14" y="16" width="68" height="46" rx="10" fill="url(#dashBlueGrad)" />
-            <rect x="14" y="24" width="68" height="8" fill="#0E57DC" />
-            <circle cx="68" cy="44" r="6" fill="#F8FAFC" />
-            <g transform="translate(48, 8)">
-              <path d="M14 2L24 6V16C24 23 18 28 14 30C10 28 4 23 4 16V6L14 2Z" fill="#10B981" stroke="white" strokeWidth="2" />
-              <path d="M10 16L13 19L18 13" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </g>
-            <defs>
-              <linearGradient id="dashBlueGrad" x1="14" y1="16" x2="82" y2="62" gradientUnits="userSpaceOnUse">
-                <stop stopColor="#1B64F2" />
-                <stop offset="1" stopColor="#0B52D4" />
-              </linearGradient>
-            </defs>
-          </svg>
+      {/* ── Row 1: Balance Banner ───────────────────────────── */}
+      <div className="bg-gradient-to-r from-[#1B64F2] via-[#1557D6] to-[#0A50D0] rounded-2xl p-6 text-white relative overflow-hidden shadow-lg shadow-blue-500/20">
+        {/* decorative wallet icon top-right */}
+        <svg className="absolute right-6 top-1/2 -translate-y-1/2 opacity-10" width="90" height="80" viewBox="0 0 90 80" fill="none">
+          <rect x="5" y="20" width="80" height="55" rx="10" fill="white"/>
+          <rect x="5" y="20" width="80" height="18" fill="white" opacity="0.6"/>
+          <circle cx="68" cy="56" r="8" fill="white" opacity="0.8"/>
+        </svg>
+        <p className="text-xs text-blue-200 font-semibold uppercase tracking-widest mb-1">Total Available Credit</p>
+        <h2 className="text-3xl md:text-4xl font-black tracking-tight">
+          ₹{balance.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
+        </h2>
+        <div className="mt-3 flex flex-wrap gap-5 text-xs text-blue-100">
+          <span>Monthly Spent: <strong className="text-white">₹{monthlySpent.toLocaleString('en-IN')}</strong></span>
+          <span>Mobile ID: <strong className="text-white">{formattedMobile}</strong> ✓</span>
         </div>
       </div>
 
-      {/* Balance Card */}
-      <div className="bg-gradient-to-r from-[#1B64F2] to-[#0A50D0] rounded-3xl p-6 md:p-8 text-white relative overflow-hidden shadow-lg shadow-blue-500/15">
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div>
-            <p className="text-xs text-blue-200 font-semibold uppercase tracking-wider">Available Balance</p>
-            <h2 className="text-3xl md:text-4xl font-black tracking-tight mt-1">
-              ₹{wallet?.balance?.toLocaleString('en-IN', { minimumFractionDigits: 2 }) || '24,850.75'}
-            </h2>
-            <p className="text-xs text-blue-100/80 mt-2">
-              Mobile Identity: <span className="font-semibold text-white">{formattedMobile}</span> (Verified)
-            </p>
-          </div>
+      {/* ── Row 2: Cash Flow Trend + Quick Actions ─────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
-          <div className="flex gap-3">
-            <button
-              onClick={() => onNavigate('send')}
-              className="px-5 py-3 rounded-xl bg-white text-[#1B64F2] font-bold text-xs shadow hover:bg-blue-50 transition-all flex items-center gap-2"
-            >
-              <Send size={15} />
-              <span>Send</span>
-            </button>
-            <button
-              onClick={() => onNavigate('receive')}
-              className="px-5 py-3 rounded-xl bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-bold text-xs transition-all flex items-center gap-2"
-            >
-              <Download size={15} />
-              <span>Receive</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2 Quick Overview Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div
-          onClick={() => onNavigate('security')}
-          className="bg-white rounded-3xl border border-[#EDF2F7] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.02)] cursor-pointer hover:border-[#1B64F2]/30 transition-all group"
-        >
-          <div className="flex items-center justify-between mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#EEF5FF] text-[#1B64F2] flex items-center justify-center">
-              <ShieldCheck size={20} />
+        {/* Cash Flow Trend (spans 2 cols) */}
+        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#EDF2F7] p-5 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-bold text-[#0F172A]">Cash Flow Trend</h3>
+            <div className="flex items-center gap-4 text-[11px] font-semibold text-[#64748B]">
+              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#10B981] inline-block rounded"/>&nbsp;Income</span>
+              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#1B64F2] inline-block rounded"/>&nbsp;Spending</span>
+              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#0F172A] inline-block rounded"/>&nbsp;Balance</span>
             </div>
-            <span className="text-xs font-bold text-[#10B981] bg-[#ECFDF5] px-2.5 py-1 rounded-full">100% Protected</span>
           </div>
-          <h3 className="text-sm md:text-base font-bold text-[#0F172A] group-hover:text-[#1B64F2] transition-colors">
-            Account Security
-          </h3>
-          <p className="text-xs text-[#64748B] mt-1">2-Step verification, Payment PIN & SIM binding active</p>
+          <div className="w-full overflow-x-auto">
+            <svg viewBox={`0 0 ${W} ${H + 20}`} className="w-full" style={{minWidth: 280, height: 130}}>
+              {/* Grid lines */}
+              {[0,25,50,75,100].map(v => (
+                <line key={v} x1="0" y1={yPos(v)} x2={W} y2={yPos(v)} stroke="#F1F5F9" strokeWidth="1"/>
+              ))}
+              {/* Paths */}
+              <path d={toPath(incomePoints)}  fill="none" stroke="#10B981" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round"/>
+              <path d={toPath(spendPoints)}   fill="none" stroke="#1B64F2" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round"/>
+              <path d={toPath(balancePoints)} fill="none" stroke="#0F172A" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" strokeDasharray="4 2"/>
+              {/* Dots on income */}
+              {incomePoints.map((v, i) => <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#10B981" stroke="white" strokeWidth="1.5"/>)}
+              {spendPoints.map((v, i)  => <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#1B64F2" stroke="white" strokeWidth="1.5"/>)}
+              {/* X labels */}
+              {['May 11','May 12','May 13','May 14','May 15','May 16','May 17'].map((l, i) => (
+                <text key={i} x={xPos(i)} y={H + 16} textAnchor="middle" fontSize="9" fill="#94A3B8">{l}</text>
+              ))}
+            </svg>
+          </div>
         </div>
 
-        <div
-          onClick={() => onNavigate('transactions')}
-          className="bg-white rounded-3xl border border-[#EDF2F7] p-6 shadow-[0_4px_24px_rgba(0,0,0,0.02)] cursor-pointer hover:border-[#1B64F2]/30 transition-all group"
-        >
-          <div className="flex items-center justify-between mb-3">
-            <div className="w-10 h-10 rounded-2xl bg-[#EEF5FF] text-[#1B64F2] flex items-center justify-center">
-              <ArrowLeftRight size={20} />
-            </div>
-            <span className="text-xs font-bold text-[#1B64F2] flex items-center gap-0.5">
-              <span>View All</span>
-              <ChevronRight size={14} />
-            </span>
-          </div>
-          <h3 className="text-sm md:text-base font-bold text-[#0F172A] group-hover:text-[#1B64F2] transition-colors">
-            Recent Activity
-          </h3>
-          <p className="text-xs text-[#64748B] mt-1">5 successful transfers in the last 7 days</p>
+        {/* Quick Actions */}
+        <div className="bg-white rounded-2xl border border-[#EDF2F7] p-5 shadow-sm flex flex-col gap-3">
+          <h3 className="text-sm font-bold text-[#0F172A] mb-1">Quick Actions</h3>
+          <button
+            onClick={() => onNavigate('send')}
+            className="w-full py-3 rounded-xl bg-[#1B64F2] hover:bg-[#1557D6] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow shadow-blue-500/20"
+          >
+            <ArrowLeftRight size={16}/>
+            Transfer Funds
+          </button>
+          <button
+            onClick={() => onNavigate('transactions')}
+            className="w-full py-3 rounded-xl bg-white border border-[#E2E8F0] hover:bg-[#F8FAFC] text-[#0F172A] font-semibold text-sm flex items-center justify-center gap-2 transition-all"
+          >
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="2" width="13" height="11" rx="2" stroke="#0F172A" strokeWidth="1.5"/><path d="M4 5.5h7M4 8h5" stroke="#0F172A" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            View Statements
+          </button>
+          <button
+            onClick={() => onNavigate('receive')}
+            className="w-full py-3 rounded-xl bg-white border border-[#E2E8F0] hover:bg-[#F8FAFC] text-[#0F172A] font-semibold text-sm flex items-center justify-center gap-2 transition-all"
+          >
+            <Download size={15}/>
+            Receive Credits
+          </button>
         </div>
       </div>
+
+      {/* ── Row 3: Transactions + Spending + Alerts ─────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+        {/* Recent Transactions (spans 1 col) */}
+        <div className="lg:col-span-1 bg-white rounded-2xl border border-[#EDF2F7] p-5 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-sm font-bold text-[#0F172A]">Recent Transactions</h3>
+            <button onClick={() => onNavigate('transactions')} className="text-xs font-bold text-[#1B64F2] hover:underline">View all</button>
+          </div>
+
+          {/* Table Headers */}
+          <div className="grid grid-cols-[1fr_auto_auto] gap-x-3 text-[10px] font-semibold text-[#94A3B8] uppercase tracking-wide pb-2 border-b border-[#F1F5F9]">
+            <span>Person</span>
+            <span className="text-right">Amount</span>
+            <span className="text-right">Status</span>
+          </div>
+
+          <div className="divide-y divide-[#F8FAFC]">
+            {recentTxns.map((tx, i) => (
+              <div key={i} className="grid grid-cols-[1fr_auto_auto] gap-x-3 items-center py-2.5 hover:bg-[#FAFBFD] -mx-1 px-1 rounded-lg transition-colors">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <img src={tx.avatar} alt={tx.name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 border border-slate-100"/>
+                  <div className="min-w-0">
+                    <p className="text-xs font-bold text-[#0F172A] truncate">{tx.name}</p>
+                    <p className="text-[10px] text-[#94A3B8]">{tx.date}</p>
+                  </div>
+                </div>
+                <span className={`text-xs font-bold text-right whitespace-nowrap ${tx.isPos ? 'text-[#10B981]' : 'text-[#EF4444]'}`}>{tx.amount}</span>
+                <span className="text-[10px] font-semibold text-[#10B981] text-right whitespace-nowrap">✓ {tx.status}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Spending Breakdown */}
+        <div className="bg-white rounded-2xl border border-[#EDF2F7] p-5 shadow-sm">
+          <div className="flex items-center justify-between mb-1">
+            <h3 className="text-sm font-bold text-[#0F172A]">Spending Breakdown</h3>
+            <span className="text-[10px] text-[#94A3B8] font-medium">This Month</span>
+          </div>
+
+          {/* Donut Chart SVG */}
+          <div className="flex flex-col items-center my-3">
+            <div className="relative">
+              <svg width="130" height="130" viewBox="0 0 130 130">
+                {(() => {
+                  let offset = 0;
+                  const r = 46; const cx = 65; const cy = 65;
+                  const circ = 2 * Math.PI * r;
+                  return spending.map((s, i) => {
+                    const dash = (s.pct / 100) * circ;
+                    const gap = circ - dash;
+                    const el = (
+                      <circle key={i} cx={cx} cy={cy} r={r}
+                        fill="none" stroke={s.color} strokeWidth="18"
+                        strokeDasharray={`${dash} ${gap}`}
+                        strokeDashoffset={-offset}
+                        transform="rotate(-90 65 65)"
+                        style={{transition: 'stroke-dasharray 0.5s ease'}}
+                      />
+                    );
+                    offset += dash;
+                    return el;
+                  });
+                })()}
+                <text x="65" y="61" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0F172A">
+                  ₹{(monthlySpent/1000).toFixed(1)}k
+                </text>
+                <text x="65" y="76" textAnchor="middle" fontSize="9" fill="#94A3B8">Total</text>
+              </svg>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            {spending.map((s, i) => (
+              <div key={i} className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{backgroundColor: s.color}}/>
+                  <span className="text-xs text-[#475569] font-medium">{s.label}</span>
+                </div>
+                <span className="text-xs font-bold text-[#0F172A]">{s.amt}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Alerts & Recommendations */}
+        <div className="bg-white rounded-2xl border border-[#EDF2F7] p-5 shadow-sm flex flex-col gap-3">
+          <h3 className="text-sm font-bold text-[#0F172A]">Alerts & Recommendations</h3>
+
+          <div className="flex items-start gap-3 p-3 bg-amber-50 rounded-xl border border-amber-100 cursor-pointer hover:bg-amber-100/60 transition-colors">
+            <div className="w-7 h-7 rounded-full bg-amber-400 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">!</div>
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-amber-900">High spending this month</p>
+              <p className="text-[11px] text-amber-700 mt-0.5">Your transfers are above average.</p>
+            </div>
+            <ChevronRight size={14} className="text-amber-400 flex-shrink-0 mt-0.5"/>
+          </div>
+
+          <div
+            onClick={() => onNavigate('security')}
+            className="flex items-start gap-3 p-3 bg-[#F0FDF4] rounded-xl border border-green-100 cursor-pointer hover:bg-green-50 transition-colors"
+          >
+            <div className="w-7 h-7 rounded-full bg-[#10B981] text-white flex items-center justify-center flex-shrink-0">
+              <ShieldCheck size={14}/>
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-green-900">Account well protected</p>
+              <p className="text-[11px] text-green-700 mt-0.5">2-step verification is active.</p>
+            </div>
+            <ChevronRight size={14} className="text-green-400 flex-shrink-0 mt-0.5"/>
+          </div>
+
+          <div className="flex items-start gap-3 p-3 bg-[#EEF5FF] rounded-xl border border-blue-100 cursor-pointer hover:bg-blue-50 transition-colors">
+            <div className="w-7 h-7 rounded-full bg-[#1B64F2] text-white flex items-center justify-center flex-shrink-0">
+              <Download size={13}/>
+            </div>
+            <div className="min-w-0">
+              <p className="text-xs font-bold text-[#1B64F2]">Receive via UPI</p>
+              <p className="text-[11px] text-blue-600 mt-0.5">Share your ID to receive credits.</p>
+            </div>
+            <ChevronRight size={14} className="text-[#1B64F2] flex-shrink-0 mt-0.5"/>
+          </div>
+
+          {/* AI Assistant Callout */}
+          <div className="mt-auto bg-[#0F172A] rounded-xl p-3.5 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#1B64F2] flex items-center justify-center flex-shrink-0">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" fill="white"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] font-bold text-white">CreditFlow AI</p>
+              <p className="text-[10px] text-slate-400 leading-snug">I can help with balance questions!</p>
+            </div>
+            <button
+              onClick={() => onNavigate('help')}
+              className="px-2.5 py-1 rounded-lg bg-[#1B64F2] text-white text-[10px] font-bold hover:bg-[#1557D6] transition-colors whitespace-nowrap"
+            >
+              Ask AI
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }
