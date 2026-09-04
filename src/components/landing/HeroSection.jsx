@@ -80,8 +80,8 @@ export default function HeroSection({ onGetStarted, onHowItWorks }) {
             {/* Subtitle description */}
             <p className="text-base sm:text-[17px] text-[#334155] leading-relaxed max-w-xl mb-8 font-normal">
               CreditFlow explores a secure way for people without a bank account to participate in
-              digital payments. With a verified mobile number as their payment identity, users can
-              receive, manage, and transfer digital value through one simple platform.
+              digital payments. With a verified mobile number as their payment identity, users can independently manage their account,
+              receive and transfer digital value through one simple platform.
             </p>
 
             {/* CTA Action Buttons */}

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/landing/Navbar';
 import HeroSection from '../components/landing/HeroSection';
 import AboutSection from '../components/landing/AboutSection';
+import UpiFlowSection from '../components/landing/UpiFlowSection';
 import HowItWorksSection from '../components/landing/HowItWorksSection';
 import SecuritySection from '../components/landing/SecuritySection';
 import FAQSection from '../components/landing/FAQSection';
@@ -66,6 +67,9 @@ export default function LandingPage() {
 
         {/* About Section */}
         <AboutSection />
+
+        {/* UPI Payment Flow Section (Exact matched design) */}
+        <UpiFlowSection />
 
         {/* How It Works Section */}
         <HowItWorksSection

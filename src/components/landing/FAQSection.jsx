@@ -7,15 +7,15 @@ export default function FAQSection() {
   const faqs = [
     {
       q: 'Do I really not need a traditional bank account to use CreditFlow?',
-      a: 'Yes! CreditFlow is designed specifically to operate without requiring an existing commercial bank account. Your verified mobile number serves as your unique cryptographic digital payment identity. You can receive, hold, and transfer digital credits directly.',
+      a: 'Yes! CreditFlow is designed specifically to operate without requiring an existing commercial bank account. Your verified mobile number serves as your unique digital payment identity. You can receive, hold, and transfer digital credits directly.',
     },
     {
       q: 'How do I add or load money into my CreditFlow wallet?',
-      a: 'You can load funds through multiple friction-free avenues: receive digital credit transfers from any friend or employer directly to your phone number, or convert physical cash into digital credits at any of our authorized local partner kirana stores or agents.',
+      a: 'Anyone can send money to your verified mobile number using a regular UPI payment. They don’t need a CreditFlow account — just make a normal UPI payment to your number. Once the payment is sent, the amount is added to your CreditFlow wallet as digital credit, ready to use or send onward.',
     },
     {
       q: 'Is my money secure if my phone is lost or stolen?',
-      a: 'Yes. Your credits are not stored locally as unprotected files on your device; they are backed by an immutable cryptographic ledger bound to your secure SIM and PIN/biometrics. If your device is lost, you can re-verify your mobile number on any replacement handset to immediately restore full access to your funds.',
+      a: 'Yes. Your credits are linked to your CreditFlow account, not stored as accessible files on your phone. If your phone is lost or stolen, your funds remain secure. Simply verify your mobile number on a replacement device and regain access to your CreditFlow account using your PIN or other security verification.',
     },
     {
       q: 'Are there any hidden maintenance fees or minimum balance requirements?',
@@ -23,7 +23,7 @@ export default function FAQSection() {
     },
     {
       q: 'Can I use CreditFlow on basic keypad/feature phones without internet?',
-      a: 'Yes. In addition to our responsive web and smartphone experience, CreditFlow supports offline SMS tokenization and USSD quick-dial gateways (*99# compatible) for low-connectivity and non-smartphone environments.',
+      a: 'CreditFlow is designed to support users with limited or no internet access. Feature-phone access can be enabled through channels such as SMS and USSD, allowing users to perform essential account and payment actions without a smartphone or mobile data. Availability of specific features depends on the supported payment and telecommunications infrastructure.',
     },
   ];
 
@@ -34,7 +34,7 @@ export default function FAQSection() {
   return (
     <section className="py-20 lg:py-28 bg-[#F8FAFC] border-t border-gray-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#1677D2] font-semibold text-xs tracking-wider uppercase mb-4">
@@ -66,9 +66,8 @@ export default function FAQSection() {
                     {faq.q}
                   </span>
                   <div
-                    className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 bg-blue-50 text-[#1677D2]' : 'text-gray-500'
-                    }`}
+                    className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 bg-blue-50 text-[#1677D2]' : 'text-gray-500'
+                      }`}
                   >
                     <ChevronDown size={18} />
                   </div>

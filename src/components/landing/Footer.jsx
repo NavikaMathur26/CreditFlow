@@ -27,17 +27,7 @@ export default function Footer({ onOpenAuth, onNavigateSection }) {
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
               CreditFlow is pioneering next-generation mobile financial inclusion — enabling anyone with a mobile number to store, receive, and transfer digital value safely without a bank account.
             </p>
-            <div className="flex items-center gap-3 pt-2 text-xs text-slate-400">
-              <span className="flex items-center gap-1">
-                <Shield size={14} className="text-[#00B074]" />
-                256-Bit Encrypted
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Lock size={14} className="text-[#38BDF8]" />
-                Hardware Protected
-              </span>
-            </div>
+
           </div>
 
           {/* Quick Links */}
@@ -112,11 +102,7 @@ export default function Footer({ onOpenAuth, onNavigateSection }) {
                   Cash-in Agent Network
                 </a>
               </li>
-              <li>
-                <a href="#how-it-works" onClick={(e) => handleLink(e, 'how-it-works')} className="hover:text-white transition-colors">
-                  USSD & Offline SMS
-                </a>
-              </li>
+
             </ul>
           </div>
 
