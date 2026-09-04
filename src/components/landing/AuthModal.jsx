@@ -145,7 +145,7 @@ export default function AuthModal({ isOpen, onClose, mode = 'login', onSuccess }
               onClick={handleQuickDemo}
               className="w-full py-3 rounded-lg font-semibold text-[#0066CC] bg-blue-50 hover:bg-blue-100 transition-colors text-sm"
             >
-              {mode === 'signup' ? '🚀 Test New User Verification Flow' : '🚀 Launch Demo Wallet (+91 98765 43210)'}
+              {mode === 'signup' ? ' Test New User Verification Flow' : 'Launch Demo Wallet (+91 98765 43210)'}
             </button>
           </form>
         ) : (
@@ -203,7 +203,7 @@ export default function AuthModal({ isOpen, onClose, mode = 'login', onSuccess }
         {/* Security Trust Note */}
         <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-center gap-2 text-xs text-gray-400">
           <Lock size={13} className="text-[#00B074]" />
-          <span>AES-256 Encrypted & Bound to SIM Identity</span>
+          <span>Encrypted & Bound to SIM Identity</span>
         </div>
       </div>
     </div>

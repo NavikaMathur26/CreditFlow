@@ -67,7 +67,7 @@ export default function UpiFlowSection() {
 
             {/* Sub-headline */}
             <h3 className="text-lg sm:text-xl font-bold text-[#0B1528] tracking-tight">
-              Works seamlessly with normal UPI.
+              Built with a vision for seamless integration with UPI.
             </h3>
           </div>
 

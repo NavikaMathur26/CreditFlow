@@ -68,11 +68,10 @@ export default function StepIdentity({ onNext, onBack, isMinor }) {
                 key={id}
                 type="button"
                 onClick={() => handleTabChange(id)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${
-                  activeDoc === id
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-semibold border transition-all ${activeDoc === id
                     ? 'text-white border-transparent shadow-md'
                     : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
-                }`}
+                  }`}
                 style={activeDoc === id ? { backgroundColor: color, boxShadow: `0 4px 12px ${color}40` } : {}}
               >
                 <Icon size={15} />
@@ -95,9 +94,8 @@ export default function StepIdentity({ onNext, onBack, isMinor }) {
                 value={docNumber}
                 onChange={(e) => { setDocNumber(e.target.value.toUpperCase()); setError(''); setVerified(false); }}
                 placeholder={doc.placeholder}
-                className={`w-full px-4 py-3 rounded-xl border text-sm font-mono font-semibold text-gray-900 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 transition-all ${
-                  error ? 'border-red-300 ring-1 ring-red-200' : verified ? 'border-emerald-300 ring-1 ring-emerald-200' : 'border-gray-200 focus:ring-blue-300'
-                }`}
+                className={`w-full px-4 py-3 rounded-xl border text-sm font-mono font-semibold text-gray-900 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 transition-all ${error ? 'border-red-300 ring-1 ring-red-200' : verified ? 'border-emerald-300 ring-1 ring-emerald-200' : 'border-gray-200 focus:ring-blue-300'
+                  }`}
               />
               {error && <p className="text-xs text-red-500">{error}</p>}
               <p className="text-xs text-gray-400">{doc.hint}</p>
@@ -193,7 +191,7 @@ export default function StepIdentity({ onNext, onBack, isMinor }) {
           </div>
           <div className="bg-blue-50 rounded-2xl border border-blue-100 p-5 text-center">
             <Shield size={24} className="text-[#0066CC] mx-auto mb-2" />
-            <p className="text-xs font-bold text-[#0066CC] mb-1">256-bit Encryption</p>
+            <p className="text-xs font-bold text-[#0066CC] mb-1">Encryption</p>
             <p className="text-[11px] text-gray-500">Your documents are encrypted before storage and never shared with third parties.</p>
           </div>
         </div>

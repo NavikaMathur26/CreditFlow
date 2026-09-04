@@ -136,11 +136,6 @@ export default function Footer({ onOpenAuth, onNavigateSection }) {
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>CreditFlow - Pay Digitally</p>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-slate-400 cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-slate-400 cursor-pointer">Terms of Service</span>
-            <span className="hover:text-slate-400 cursor-pointer">Regulatory Disclosures</span>
-          </div>
         </div>
 
       </div>

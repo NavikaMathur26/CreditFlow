@@ -107,8 +107,8 @@ export default function UserDashboard() {
                   key={item.id}
                   onClick={() => handleTabChange(item.id)}
                   className={`w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium transition-all text-left ${isActive
-                      ? 'bg-[#EEF5FF] text-[#1B64F2] font-semibold shadow-sm shadow-blue-500/5'
-                      : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
+                    ? 'bg-[#EEF5FF] text-[#1B64F2] font-semibold shadow-sm shadow-blue-500/5'
+                    : 'text-[#64748B] hover:text-[#0F172A] hover:bg-[#F8FAFC]'
                     }`}
                 >
                   {isActive && item.id === 'security' ? (
@@ -208,14 +208,14 @@ export default function UserDashboard() {
           <div className="flex items-center gap-4">
             {/* Search */}
             <div className="flex items-center gap-2 bg-[#F8FAFC] border border-[#E8EDF2] rounded-xl px-3.5 py-2.5 w-44">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="#94A3B8" strokeWidth="1.5"/><path d="M10 10L13 13" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="5" stroke="#94A3B8" strokeWidth="1.5" /><path d="M10 10L13 13" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" /></svg>
               <span className="text-xs text-[#94A3B8]">Search...</span>
             </div>
 
             {/* Notification Bell */}
             <div className="relative">
               <button className="w-9 h-9 rounded-full bg-[#F8FAFC] border border-[#E8EDF2] flex items-center justify-center text-[#64748B] hover:bg-[#EEF5FF] transition-colors">
-                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 00-6 6v3l-2 2v1h16v-1l-2-2V8a6 6 0 00-6-6zM8.5 17a1.5 1.5 0 003 0H8.5z" fill="#64748B"/></svg>
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 00-6 6v3l-2 2v1h16v-1l-2-2V8a6 6 0 00-6-6zM8.5 17a1.5 1.5 0 003 0H8.5z" fill="#64748B" /></svg>
               </button>
               <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#1B64F2] text-white rounded-full text-[9px] font-bold flex items-center justify-center">1</span>
             </div>
@@ -273,8 +273,7 @@ function SecurityView({ onNavigate }) {
       {/* Top Header Row with 3D Monitor Illustration */}
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-xs font-semibold text-[#64748B] tracking-wide mb-1">Security</p>
-          <h1 className="text-2xl md:text-3xl font-extrabold text-[#0F172A] tracking-tight">Dashboard</h1>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-[#0F172A] tracking-tight">Security</h1>
           <p className="text-xs md:text-sm text-[#64748B] mt-1">Monitor and manage your account security</p>
         </div>
 
@@ -808,8 +807,8 @@ function TransactionsView() {
                 key={tab}
                 onClick={() => setFilter(tab)}
                 className={`px-5 py-2 rounded-xl text-xs font-bold transition-all ${isActive
-                    ? 'bg-[#1B64F2] text-white shadow-sm shadow-[#1B64F2]/20'
-                    : 'bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A]'
+                  ? 'bg-[#1B64F2] text-white shadow-sm shadow-[#1B64F2]/20'
+                  : 'bg-white border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A]'
                   }`}
               >
                 {tab}
@@ -874,24 +873,24 @@ function DashboardOverview({ onNavigate }) {
   const monthlySpent = wallet?.monthlySpent ?? 14320.00;
 
   const recentTxns = [
-    { name: 'Priya Patel',    category: 'Transfer',      date: '28 May 2024', amount: '+₹500.00',   status: 'Posted', isPos: true,  avatar: 'https://randomuser.me/api/portraits/women/44.jpg' },
-    { name: 'Amit Verma',     category: 'Transfer',      date: '27 May 2024', amount: '-₹200.00',   status: 'Posted', isPos: false, avatar: 'https://randomuser.me/api/portraits/men/32.jpg' },
-    { name: 'Sunita Devi',    category: 'Family',        date: '27 May 2024', amount: '+₹1,000.00', status: 'Posted', isPos: true,  avatar: 'https://randomuser.me/api/portraits/women/65.jpg' },
-    { name: 'Raj Singh',      category: 'Travel',        date: '26 May 2024', amount: '-₹150.00',   status: 'Posted', isPos: false, avatar: 'https://randomuser.me/api/portraits/men/47.jpg' },
-    { name: 'Deepak Kumar',   category: 'Entertainment', date: '26 May 2024', amount: '+₹300.00',   status: 'Posted', isPos: true,  avatar: 'https://randomuser.me/api/portraits/men/55.jpg' },
+    { name: 'Priya Patel', category: 'Transfer', date: '28 May 2024', amount: '+₹500.00', status: 'Posted', isPos: true, avatar: 'https://randomuser.me/api/portraits/women/44.jpg' },
+    { name: 'Amit Verma', category: 'Transfer', date: '27 May 2024', amount: '-₹200.00', status: 'Posted', isPos: false, avatar: 'https://randomuser.me/api/portraits/men/32.jpg' },
+    { name: 'Sunita Devi', category: 'Family', date: '27 May 2024', amount: '+₹1,000.00', status: 'Posted', isPos: true, avatar: 'https://randomuser.me/api/portraits/women/65.jpg' },
+    { name: 'Raj Singh', category: 'Travel', date: '26 May 2024', amount: '-₹150.00', status: 'Posted', isPos: false, avatar: 'https://randomuser.me/api/portraits/men/47.jpg' },
+    { name: 'Deepak Kumar', category: 'Entertainment', date: '26 May 2024', amount: '+₹300.00', status: 'Posted', isPos: true, avatar: 'https://randomuser.me/api/portraits/men/55.jpg' },
   ];
 
   const spending = [
-    { label: 'Transfer',      color: '#1B64F2', pct: 38, amt: '₹5,441.60' },
-    { label: 'Travel',        color: '#F59E0B', pct: 22, amt: '₹3,150.40' },
-    { label: 'Family',        color: '#10B981', pct: 18, amt: '₹2,577.60' },
+    { label: 'Transfer', color: '#1B64F2', pct: 38, amt: '₹5,441.60' },
+    { label: 'Travel', color: '#F59E0B', pct: 22, amt: '₹3,150.40' },
+    { label: 'Family', color: '#10B981', pct: 18, amt: '₹2,577.60' },
     { label: 'Entertainment', color: '#8B5CF6', pct: 13, amt: '₹1,861.60' },
-    { label: 'Other',         color: '#94A3B8', pct:  9, amt: '₹1,288.80' },
+    { label: 'Other', color: '#94A3B8', pct: 9, amt: '₹1,288.80' },
   ];
 
   // Mini SVG sparkline for Cash Flow Trend
-  const incomePoints  = [40, 60, 55, 70, 65, 80, 75];
-  const spendPoints   = [20, 35, 30, 50, 45, 55, 50];
+  const incomePoints = [40, 60, 55, 70, 65, 80, 75];
+  const spendPoints = [20, 35, 30, 50, 45, 55, 50];
   const balancePoints = [80, 75, 72, 68, 74, 78, 76];
   const W = 380; const H = 100; const cols = incomePoints.length;
   const xPos = (i) => (i / (cols - 1)) * W;
@@ -905,9 +904,9 @@ function DashboardOverview({ onNavigate }) {
       <div className="bg-gradient-to-r from-[#1B64F2] via-[#1557D6] to-[#0A50D0] rounded-2xl p-6 text-white relative overflow-hidden shadow-lg shadow-blue-500/20">
         {/* decorative wallet icon top-right */}
         <svg className="absolute right-6 top-1/2 -translate-y-1/2 opacity-10" width="90" height="80" viewBox="0 0 90 80" fill="none">
-          <rect x="5" y="20" width="80" height="55" rx="10" fill="white"/>
-          <rect x="5" y="20" width="80" height="18" fill="white" opacity="0.6"/>
-          <circle cx="68" cy="56" r="8" fill="white" opacity="0.8"/>
+          <rect x="5" y="20" width="80" height="55" rx="10" fill="white" />
+          <rect x="5" y="20" width="80" height="18" fill="white" opacity="0.6" />
+          <circle cx="68" cy="56" r="8" fill="white" opacity="0.8" />
         </svg>
         <p className="text-xs text-blue-200 font-semibold uppercase tracking-widest mb-1">Total Available Credit</p>
         <h2 className="text-3xl md:text-4xl font-black tracking-tight">
@@ -927,26 +926,26 @@ function DashboardOverview({ onNavigate }) {
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold text-[#0F172A]">Cash Flow Trend</h3>
             <div className="flex items-center gap-4 text-[11px] font-semibold text-[#64748B]">
-              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#10B981] inline-block rounded"/>&nbsp;Income</span>
-              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#1B64F2] inline-block rounded"/>&nbsp;Spending</span>
-              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#0F172A] inline-block rounded"/>&nbsp;Balance</span>
+              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#10B981] inline-block rounded" />&nbsp;Income</span>
+              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#1B64F2] inline-block rounded" />&nbsp;Spending</span>
+              <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#0F172A] inline-block rounded" />&nbsp;Balance</span>
             </div>
           </div>
           <div className="w-full overflow-x-auto">
-            <svg viewBox={`0 0 ${W} ${H + 20}`} className="w-full" style={{minWidth: 280, height: 130}}>
+            <svg viewBox={`0 0 ${W} ${H + 20}`} className="w-full" style={{ minWidth: 280, height: 130 }}>
               {/* Grid lines */}
-              {[0,25,50,75,100].map(v => (
-                <line key={v} x1="0" y1={yPos(v)} x2={W} y2={yPos(v)} stroke="#F1F5F9" strokeWidth="1"/>
+              {[0, 25, 50, 75, 100].map(v => (
+                <line key={v} x1="0" y1={yPos(v)} x2={W} y2={yPos(v)} stroke="#F1F5F9" strokeWidth="1" />
               ))}
               {/* Paths */}
-              <path d={toPath(incomePoints)}  fill="none" stroke="#10B981" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round"/>
-              <path d={toPath(spendPoints)}   fill="none" stroke="#1B64F2" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round"/>
-              <path d={toPath(balancePoints)} fill="none" stroke="#0F172A" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" strokeDasharray="4 2"/>
+              <path d={toPath(incomePoints)} fill="none" stroke="#10B981" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
+              <path d={toPath(spendPoints)} fill="none" stroke="#1B64F2" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round" />
+              <path d={toPath(balancePoints)} fill="none" stroke="#0F172A" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round" strokeDasharray="4 2" />
               {/* Dots on income */}
-              {incomePoints.map((v, i) => <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#10B981" stroke="white" strokeWidth="1.5"/>)}
-              {spendPoints.map((v, i)  => <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#1B64F2" stroke="white" strokeWidth="1.5"/>)}
+              {incomePoints.map((v, i) => <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#10B981" stroke="white" strokeWidth="1.5" />)}
+              {spendPoints.map((v, i) => <circle key={i} cx={xPos(i)} cy={yPos(v)} r="3.5" fill="#1B64F2" stroke="white" strokeWidth="1.5" />)}
               {/* X labels */}
-              {['May 11','May 12','May 13','May 14','May 15','May 16','May 17'].map((l, i) => (
+              {['May 11', 'May 12', 'May 13', 'May 14', 'May 15', 'May 16', 'May 17'].map((l, i) => (
                 <text key={i} x={xPos(i)} y={H + 16} textAnchor="middle" fontSize="9" fill="#94A3B8">{l}</text>
               ))}
             </svg>
@@ -960,21 +959,21 @@ function DashboardOverview({ onNavigate }) {
             onClick={() => onNavigate('send')}
             className="w-full py-3 rounded-xl bg-[#1B64F2] hover:bg-[#1557D6] text-white font-bold text-sm flex items-center justify-center gap-2 transition-all shadow shadow-blue-500/20"
           >
-            <ArrowLeftRight size={16}/>
+            <ArrowLeftRight size={16} />
             Transfer Funds
           </button>
           <button
             onClick={() => onNavigate('transactions')}
             className="w-full py-3 rounded-xl bg-white border border-[#E2E8F0] hover:bg-[#F8FAFC] text-[#0F172A] font-semibold text-sm flex items-center justify-center gap-2 transition-all"
           >
-            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="2" width="13" height="11" rx="2" stroke="#0F172A" strokeWidth="1.5"/><path d="M4 5.5h7M4 8h5" stroke="#0F172A" strokeWidth="1.5" strokeLinecap="round"/></svg>
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><rect x="1" y="2" width="13" height="11" rx="2" stroke="#0F172A" strokeWidth="1.5" /><path d="M4 5.5h7M4 8h5" stroke="#0F172A" strokeWidth="1.5" strokeLinecap="round" /></svg>
             View Statements
           </button>
           <button
             onClick={() => onNavigate('receive')}
             className="w-full py-3 rounded-xl bg-white border border-[#E2E8F0] hover:bg-[#F8FAFC] text-[#0F172A] font-semibold text-sm flex items-center justify-center gap-2 transition-all"
           >
-            <Download size={15}/>
+            <Download size={15} />
             Receive Credits
           </button>
         </div>
@@ -1001,7 +1000,7 @@ function DashboardOverview({ onNavigate }) {
             {recentTxns.map((tx, i) => (
               <div key={i} className="grid grid-cols-[1fr_auto_auto] gap-x-3 items-center py-2.5 hover:bg-[#FAFBFD] -mx-1 px-1 rounded-lg transition-colors">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <img src={tx.avatar} alt={tx.name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 border border-slate-100"/>
+                  <img src={tx.avatar} alt={tx.name} className="w-8 h-8 rounded-full object-cover flex-shrink-0 border border-slate-100" />
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-[#0F172A] truncate">{tx.name}</p>
                     <p className="text-[10px] text-[#94A3B8]">{tx.date}</p>
@@ -1038,7 +1037,7 @@ function DashboardOverview({ onNavigate }) {
                         strokeDasharray={`${dash} ${gap}`}
                         strokeDashoffset={-offset}
                         transform="rotate(-90 65 65)"
-                        style={{transition: 'stroke-dasharray 0.5s ease'}}
+                        style={{ transition: 'stroke-dasharray 0.5s ease' }}
                       />
                     );
                     offset += dash;
@@ -1046,7 +1045,7 @@ function DashboardOverview({ onNavigate }) {
                   });
                 })()}
                 <text x="65" y="61" textAnchor="middle" fontSize="13" fontWeight="800" fill="#0F172A">
-                  ₹{(monthlySpent/1000).toFixed(1)}k
+                  ₹{(monthlySpent / 1000).toFixed(1)}k
                 </text>
                 <text x="65" y="76" textAnchor="middle" fontSize="9" fill="#94A3B8">Total</text>
               </svg>
@@ -1057,7 +1056,7 @@ function DashboardOverview({ onNavigate }) {
             {spending.map((s, i) => (
               <div key={i} className="flex items-center justify-between">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{backgroundColor: s.color}}/>
+                  <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: s.color }} />
                   <span className="text-xs text-[#475569] font-medium">{s.label}</span>
                 </div>
                 <span className="text-xs font-bold text-[#0F172A]">{s.amt}</span>
@@ -1076,7 +1075,7 @@ function DashboardOverview({ onNavigate }) {
               <p className="text-xs font-bold text-amber-900">High spending this month</p>
               <p className="text-[11px] text-amber-700 mt-0.5">Your transfers are above average.</p>
             </div>
-            <ChevronRight size={14} className="text-amber-400 flex-shrink-0 mt-0.5"/>
+            <ChevronRight size={14} className="text-amber-400 flex-shrink-0 mt-0.5" />
           </div>
 
           <div
@@ -1084,34 +1083,34 @@ function DashboardOverview({ onNavigate }) {
             className="flex items-start gap-3 p-3 bg-[#F0FDF4] rounded-xl border border-green-100 cursor-pointer hover:bg-green-50 transition-colors"
           >
             <div className="w-7 h-7 rounded-full bg-[#10B981] text-white flex items-center justify-center flex-shrink-0">
-              <ShieldCheck size={14}/>
+              <ShieldCheck size={14} />
             </div>
             <div className="min-w-0">
               <p className="text-xs font-bold text-green-900">Account well protected</p>
               <p className="text-[11px] text-green-700 mt-0.5">2-step verification is active.</p>
             </div>
-            <ChevronRight size={14} className="text-green-400 flex-shrink-0 mt-0.5"/>
+            <ChevronRight size={14} className="text-green-400 flex-shrink-0 mt-0.5" />
           </div>
 
           <div className="flex items-start gap-3 p-3 bg-[#EEF5FF] rounded-xl border border-blue-100 cursor-pointer hover:bg-blue-50 transition-colors">
             <div className="w-7 h-7 rounded-full bg-[#1B64F2] text-white flex items-center justify-center flex-shrink-0">
-              <Download size={13}/>
+              <Download size={13} />
             </div>
             <div className="min-w-0">
               <p className="text-xs font-bold text-[#1B64F2]">Receive via UPI</p>
               <p className="text-[11px] text-blue-600 mt-0.5">Share your ID to receive credits.</p>
             </div>
-            <ChevronRight size={14} className="text-[#1B64F2] flex-shrink-0 mt-0.5"/>
+            <ChevronRight size={14} className="text-[#1B64F2] flex-shrink-0 mt-0.5" />
           </div>
 
           {/* AI Assistant Callout */}
           <div className="mt-auto bg-[#0F172A] rounded-xl p-3.5 flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-[#1B64F2] flex items-center justify-center flex-shrink-0">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" fill="white"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round"/></svg>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="3" fill="white" /><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" /></svg>
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-bold text-white">CreditFlow AI</p>
-              <p className="text-[10px] text-slate-400 leading-snug">I can help with balance questions!</p>
+              <p className="text-[11px] font-bold text-white">Vishwas AI</p>
+              <p className="text-[10px] text-slate-400 leading-snug">Need any help?</p>
             </div>
             <button
               onClick={() => onNavigate('help')}

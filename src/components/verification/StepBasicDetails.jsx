@@ -99,11 +99,10 @@ export default function StepBasicDetails({ onNext, onBack, onAgeChange }) {
 
             {/* Age indicator */}
             {age !== null && !isTooYoung && !isTooOld && (
-              <div className={`mt-2 flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg ${
-                isMinor
+              <div className={`mt-2 flex items-center gap-2 text-xs font-semibold px-3 py-2 rounded-lg ${isMinor
                   ? 'bg-amber-50 text-amber-700 border border-amber-200'
                   : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-              }`}>
+                }`}>
                 {isMinor ? <AlertTriangle size={13} /> : <CheckCircle2 size={13} />}
                 {isMinor
                   ? `You are ${age} years old. Guardian verification will be required.`
@@ -174,8 +173,8 @@ export default function StepBasicDetails({ onNext, onBack, onAgeChange }) {
               <span className="text-sm font-bold text-[#0066CC]">Why we need this?</span>
             </div>
             <ul className="space-y-2 text-xs text-gray-600 leading-relaxed">
-              <li className="flex gap-2"><span className="text-[#0066CC] mt-0.5">•</span> Your name links your wallet identity to government records</li>
-              <li className="flex gap-2"><span className="text-[#0066CC] mt-0.5">•</span> Date of birth is used for age verification & RBI compliance</li>
+              <li className="flex gap-2"><span className="text-[#0066CC] mt-0.5">•</span> Your name links your wallet identity to records</li>
+              <li className="flex gap-2"><span className="text-[#0066CC] mt-0.5">•</span> Date of birth is used for age verification</li>
               <li className="flex gap-2"><span className="text-[#0066CC] mt-0.5">•</span> Email is optional but enables transaction receipts</li>
               <li className="flex gap-2"><span className="text-[#0066CC] mt-0.5">•</span> Language preference sets your wallet interface language</li>
             </ul>

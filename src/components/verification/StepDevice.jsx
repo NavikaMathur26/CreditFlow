@@ -3,7 +3,6 @@ import { ArrowLeft, ArrowRight, Smartphone, Fingerprint, Shield, CheckCircle2, C
 
 const BINDING_STEPS = [
   { id: 'sim', label: 'SIM Card Binding', desc: 'Bind wallet to your registered SIM identity', icon: Smartphone, color: '#0066CC' },
-  { id: 'hardware', label: 'Hardware Enclave', desc: 'Secure key stored in device Trusted Execution Environment', icon: Cpu, color: '#7C3AED' },
   { id: 'biometric', label: 'Biometric Enrollment', desc: 'Fingerprint / Face ID for transaction authorization', icon: Fingerprint, color: '#00B074' },
 ];
 
@@ -53,9 +52,8 @@ export default function StepDevice({ onNext, onBack }) {
           {BINDING_STEPS.map(({ id, label, desc, icon: Icon, color }) => (
             <div
               key={id}
-              className={`bg-white rounded-2xl border p-5 flex items-center gap-4 transition-all ${
-                bound[id] ? 'border-emerald-200 shadow-sm shadow-emerald-100/50' : 'border-gray-100 shadow-sm'
-              }`}
+              className={`bg-white rounded-2xl border p-5 flex items-center gap-4 transition-all ${bound[id] ? 'border-emerald-200 shadow-sm shadow-emerald-100/50' : 'border-gray-100 shadow-sm'
+                }`}
             >
               <div
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -121,7 +119,6 @@ export default function StepDevice({ onNext, onBack }) {
             {[
               'Prevents unauthorized access from unknown devices',
               'SIM binding ensures only your registered number can transact',
-              'Hardware enclave stores keys securely, even from malware',
               'Biometric locks ensure you authorize every payment',
             ].map((t, i) => (
               <li key={i} className="flex gap-2">

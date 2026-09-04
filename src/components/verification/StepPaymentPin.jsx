@@ -81,7 +81,7 @@ export default function StepPaymentPin({ onBack }) {
       <div className="max-w-lg mx-auto flex flex-col items-center text-center py-10">
         {/* Confetti-like circles */}
         <div className="relative w-36 h-36 mb-8">
-          {['#0066CC','#00B074','#7C3AED','#F59E0B','#EC4899'].map((c, i) => (
+          {['#0066CC', '#00B074', '#7C3AED', '#F59E0B', '#EC4899'].map((c, i) => (
             <div
               key={i}
               className="absolute w-4 h-4 rounded-full opacity-70"
@@ -148,13 +148,12 @@ export default function StepPaymentPin({ onBack }) {
           {['Create PIN', 'Confirm PIN'].map((label, i) => (
             <div
               key={label}
-              className={`flex-1 text-center py-2 rounded-lg text-xs font-bold border transition-all ${
-                phase === (i === 0 ? 'create' : 'confirm')
+              className={`flex-1 text-center py-2 rounded-lg text-xs font-bold border transition-all ${phase === (i === 0 ? 'create' : 'confirm')
                   ? 'bg-[#0066CC] text-white border-transparent'
                   : i < (phase === 'confirm' ? 1 : 0)
-                  ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
-                  : 'bg-gray-50 text-gray-400 border-gray-100'
-              }`}
+                    ? 'bg-emerald-50 text-emerald-600 border-emerald-200'
+                    : 'bg-gray-50 text-gray-400 border-gray-100'
+                }`}
             >
               {i < (phase === 'confirm' ? 1 : 0) ? '✓ ' : ''}{label}
             </div>
@@ -198,7 +197,7 @@ export default function StepPaymentPin({ onBack }) {
         <div className="flex gap-3">
           <button
             type="button"
-            onClick={phase === 'create' ? onBack : () => { setPhase('create'); setConfirmPin(['','','','','','']); setError(''); }}
+            onClick={phase === 'create' ? onBack : () => { setPhase('create'); setConfirmPin(['', '', '', '', '', '']); setError(''); }}
             className="flex items-center gap-2 px-5 py-3 rounded-xl border border-gray-200 text-gray-600 font-semibold text-sm hover:bg-gray-50 transition-all"
           >
             Back
@@ -214,7 +213,7 @@ export default function StepPaymentPin({ onBack }) {
             ) : phase === 'create' ? (
               'Next: Confirm PIN →'
             ) : (
-              '🚀 Activate My Wallet'
+              'Activate My Wallet'
             )}
           </button>
         </div>

@@ -24,11 +24,11 @@ export const INITIAL_WALLET = {
 };
 
 export const INITIAL_CONTACTS = [
-  { id: 'c1', name: 'Priya Patel', mobile: '9823012345', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80', isFrequent: true, lastPaid: '2026-03-01' },
-  { id: 'c2', name: 'Amit Verma', mobile: '9845067890', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80', isFrequent: true, lastPaid: '2026-02-28' },
-  { id: 'c3', name: 'Mom', mobile: '9812034567', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80', isFrequent: true, lastPaid: '2026-02-27' },
-  { id: 'c4', name: 'Raj Singh', mobile: '9876509876', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80', isFrequent: false, lastPaid: '2026-02-20' },
-  { id: 'c5', name: 'Deepak Kumar', mobile: '9800112233', avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80', isFrequent: true, lastPaid: '2026-03-02' },
+  { id: 'c1', name: 'Priya Patel', mobile: '9823012345', avatar: 'https://randomuser.me/api/portraits/women/44.jpg', isFrequent: true, lastPaid: '2026-03-01' },
+  { id: 'c2', name: 'Amit Verma', mobile: '9845067890', avatar: 'https://randomuser.me/api/portraits/men/32.jpg', isFrequent: true, lastPaid: '2026-02-28' },
+  { id: 'c3', name: 'Sunita Devi', mobile: '9812034567', avatar: 'https://randomuser.me/api/portraits/women/65.jpg', isFrequent: true, lastPaid: '2026-02-27' },
+  { id: 'c4', name: 'Raj Singh', mobile: '9876509876', avatar: 'https://randomuser.me/api/portraits/men/47.jpg', isFrequent: false, lastPaid: '2026-02-20' },
+  { id: 'c5', name: 'Deepak Kumar', mobile: '9800112233', avatar: 'https://randomuser.me/api/portraits/men/55.jpg', isFrequent: true, lastPaid: '2026-03-02' },
 ];
 
 export const INITIAL_TRANSACTIONS = [
@@ -47,7 +47,7 @@ export const INITIAL_TRANSACTIONS = [
     referenceId: 'CF-992019482',
     category: 'Transfer',
     fee: 0,
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
+    avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
   },
   {
     id: 'tx_2',
@@ -64,14 +64,14 @@ export const INITIAL_TRANSACTIONS = [
     referenceId: 'CF-992019481',
     category: 'Transfer',
     fee: 0,
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80',
+    avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
   },
   {
     id: 'tx_3',
     type: 'RECEIVED',
     recipientName: 'Rahul Kumar',
     recipientMobile: '9876543210',
-    senderName: 'Mom',
+    senderName: 'Sunita Devi',
     senderMobile: '9812034567',
     amount: 1000.00,
     timestamp: '2024-05-27T09:20:00.000Z',
@@ -81,7 +81,7 @@ export const INITIAL_TRANSACTIONS = [
     referenceId: 'CF-992019480',
     category: 'Family',
     fee: 0,
-    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
+    avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
   },
   {
     id: 'tx_4',
@@ -98,7 +98,7 @@ export const INITIAL_TRANSACTIONS = [
     referenceId: 'CF-992019479',
     category: 'Travel',
     fee: 0,
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+    avatar: 'https://randomuser.me/api/portraits/men/47.jpg',
   },
   {
     id: 'tx_5',
@@ -115,7 +115,7 @@ export const INITIAL_TRANSACTIONS = [
     referenceId: 'CF-992019478',
     category: 'Entertainment',
     fee: 0,
-    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80',
+    avatar: 'https://randomuser.me/api/portraits/men/55.jpg',
   }
 ];
 

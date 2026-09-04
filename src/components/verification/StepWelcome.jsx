@@ -4,8 +4,8 @@ import { Shield, Zap, HeadphonesIcon, ArrowRight, CheckCircle2, Smartphone } fro
 const features = [
   {
     icon: Shield,
-    title: '100% Secure',
-    desc: 'AES-256 encryption & SIM-bound identity protect all your data.',
+    title: 'Secure Transactions',
+    desc: 'Multiple security checks that help keep your account and transactions protected',
     color: '#0066CC',
     bg: 'bg-blue-50',
   },
@@ -100,10 +100,10 @@ export default function StepWelcome({ phoneNumber, onNext }) {
               <div className="flex flex-col items-center min-w-[80px]">
                 <div
                   className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-2 mb-2 ${step.done
-                      ? 'bg-[#00B074] border-[#00B074] text-white'
-                      : step.id === 2
-                        ? 'bg-[#0066CC] border-[#0066CC] text-white shadow-md shadow-blue-300/40'
-                        : 'bg-white border-gray-200 text-gray-400'
+                    ? 'bg-[#00B074] border-[#00B074] text-white'
+                    : step.id === 2
+                      ? 'bg-[#0066CC] border-[#0066CC] text-white shadow-md shadow-blue-300/40'
+                      : 'bg-white border-gray-200 text-gray-400'
                     }`}
                 >
                   {step.done ? <CheckCircle2 size={16} /> : step.id}
